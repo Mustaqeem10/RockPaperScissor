@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Rock Paper Scissor</title>
+    <script>
+        let getComputerChoice = () => {
+            const list = ["Rock", "Paper", "Scissor"]
+            return list[Math.floor(Math.random()*list.length)];
+        }
+
+        let play = choice => {
+            let comp = getComputerChoice();
+            let Choice = choice.charAt(0).toUpperCase() + choice.slice(1);
+            console.log(Choice);
+            if (comp == Choice){
+                console.log(`Computer choose ${comp}. Game is drawn!`);
+            }
+            else if (Choice=="Rock" && comp=="Scissor" || Choice=="Paper" && comp=="Rock" || Choice=="Scissor" && comp=="Paper"){
+                console.log(`Computer choose ${comp}. You have won!`);
+            }
+            else {
+                console.log(`Computer choose ${comp}. You have lost!`)
+            }
+        }
+
+        console.log(play("scissor"))
+    </script>
+</html>
