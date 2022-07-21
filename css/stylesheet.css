@@ -1,0 +1,99 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid blue;
+    font-weight: bolder;
+}
+
+.header h1 {
+    color: darkblue
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.content h4 {
+    font-size: large;
+    font-weight: bolder;
+    color: blue;
+    margin-bottom: 5px;
+}
+
+.content h6 {
+    font-size: medium;
+    color: blue;
+}
+
+.score-box {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+}
+
+.player-sign, .computer-sign {
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    font-size: 20px;
+    color: red;
+}
+
+.button {
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+input {
+    border: none;
+    cursor: pointer;
+    height: 200px;
+    width: 200px;
+    vertical-align: middle;
+}
+
+input.one {
+    background: url("../images/Rock.png") no-repeat 10px center;
+    background-color: transparent;
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+
+input.two {
+    background: url("../images/Scissor.png") no-repeat 10px center;
+    background-color: transparent;
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+
+input.three {
+    background: url("../images/Paper.png") no-repeat 10px center;
+    background-color: transparent;
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}

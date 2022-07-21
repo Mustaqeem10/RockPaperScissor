@@ -1,27 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
     <title>Rock Paper Scissor</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/stylesheet.css">
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('click', (e) => {
+                let choice = document.querySelector('.player-sign');
+                if (e.target.className == "one") {
+                    playRound('Rock', getComputerChoice());
+                }
+                if (e.target.className == "two") {
+                    playRound('Scissor', getComputerChoice());
+                }
+                if (e.target.className == "three") {
+                    playRound('Paper', getComputerChoice());
+                }
+            });
+        })
+
         let getComputerChoice = () => {
             const list = ["Rock", "Paper", "Scissor"]
-            return list[Math.floor(Math.random()*list.length)];
+            return list[Math.floor(Math.random() * list.length)];
         }
 
-        let play = choice => {
-            let comp = getComputerChoice();
-            let Choice = choice.charAt(0).toUpperCase() + choice.slice(1);
-            console.log(Choice);
-            if (comp == Choice){
-                console.log(`Computer choose ${comp}. Game is drawn!`);
+        let computerScore = 0;
+        let playerScore = 0;
+
+        let playRound = (playerSelection, computerSelection) => {
+            const result = document.querySelector('.result');
+            result.textContent = "";
+            if (computerSelection == playerSelection) {
+                let text = document.createTextNode("Game is drawn");
+                result.appendChild(text);
             }
-            else if (Choice=="Rock" && comp=="Scissor" || Choice=="Paper" && comp=="Rock" || Choice=="Scissor" && comp=="Paper"){
-                console.log(`Computer choose ${comp}. You have won!`);
+            else if (playerSelection == "Rock" && computerSelection == "Scissor" || playerSelection == "Paper" && computerSelection == "Rock" || playerSelection == "Scissor" && computerSelection == "Paper") {
+                let text = document.createTextNode(`${playerSelection} beats ${computerSelection}. You have won!`);
+                result.appendChild(text);
+                playerScore++;
+                document.querySelector('.player-sign').innerHTML = `Player: ${playerScore}`;
             }
             else {
-                console.log(`Computer choose ${comp}. You have lost!`)
+                let text = document.createTextNode(`${computerSelection} beats ${playerSelection}. You have lost!`);
+                result.appendChild(text);
+                computerScore++;
+                document.querySelector('.computer-sign').innerHTML = `Computer: ${computerScore}`;
             }
-        }
+            if (playerScore == 5){
+                    result.textContent = "Player has won the game!"
+                    playerScore = 0;
+                    computerScore = 0;
+                    document.querySelector('.player-sign').innerHTML = `Player: ${playerScore}`;
+                    document.querySelector('.computer-sign').innerHTML = `Computer: ${computerScore}`;
+                }
 
-        console.log(play("scissor"))
+            if (computerScore == 5){
+                    result.textContent = "Computer has won the game!"
+                    playerScore = 0;
+                    computerScore = 0;
+                    document.querySelector('.player-sign').innerHTML = `Player: ${playerScore}`;
+                    document.querySelector('.computer-sign').innerHTML = `Computer: ${computerScore}`;
+                }
+        }
     </script>
+</head>
+
+<body>
+    <div class="header">
+        <h1> Rock Paper Scissors </h1>
+    </div>
+    <div class="content">
+        <h4> Choose your weopon </h4>
+        <h6> First to score 5 points win the game </h6>
+    </div>
+    <div class="score-container">
+        <div class="score-box">
+            <div class="player-sign">
+                <p> Player: 0</p>
+            </div>
+            <div class="computer-sign">
+                <p> Computer: 0</p>
+            </div>
+        </div>
+    </div>
+    <div class="result">
+        <h2></h2>
+    </div>
+    <div class="button">
+        <div class="container">
+            <input type="button" class="one">
+            <input type="button" class="two">
+            <input type="button" class="three">
+        </div>
+    </div>
+</body>
+
 </html>
